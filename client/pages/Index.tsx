@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { Search, Menu, X, ExternalLink, Database, Globe, ChevronDown, ChevronRight, Leaf, BarChart3, Users, FileText, Shield, DollarSign, Settings, Archive, Moon, Sun, Home } from "lucide-react";
+import { Search, Menu, X, ExternalLink, Database, Globe, ChevronDown, ChevronRight, Leaf, BarChart3, Users, FileText, Shield, DollarSign, Settings, Archive, Moon, Sun, Home, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -93,6 +93,14 @@ export default function Index() {
   const [selectedView, setSelectedView] = useState<'home' | 'storage' | 'official' | string>('home');
   const [selectedSubcategory, setSelectedSubcategory] = useState<string>('');
 
+  // Carousel state
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const heroImages = [
+    '/assets/images/fotbar-bps-nganjuk.png',
+    '/assets/images/fotbar2-bps-nganjuk.png',
+    // '/assets/images/contoh-surat-tugas.jpg'
+  ];
+
   // Initialize dark mode from localStorage
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -102,12 +110,34 @@ export default function Index() {
     document.documentElement.classList.toggle('dark', shouldBeDark);
   }, []);
 
+  // Auto-slide functionality
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 4000); // 4 seconds
+
+    return () => clearInterval(timer);
+  }, [heroImages.length]);
+
   // Toggle dark mode
   const toggleDarkMode = () => {
     const newDarkMode = !isDarkMode;
     setIsDarkMode(newDarkMode);
     document.documentElement.classList.toggle('dark', newDarkMode);
     localStorage.setItem('theme', newDarkMode ? 'dark' : 'light');
+  };
+
+  // Carousel navigation functions
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
   };
 
   // Toggle menu open/close
@@ -215,37 +245,88 @@ export default function Index() {
       return (
         <>
           {/* Hero Section */}
-          <section className="relative py-8 px-4">
-            <div className="container text-center">
+          <section className="relative py-8 px-4 h-[80vh] flex items-center overflow-hidden">
+            {/* Background Image Carousel */}
+            <div className="absolute inset-0">
+              {heroImages.map((image, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50 transition-transform duration-1000 ease-in-out ${
+                    index === currentSlide ? 'translate-x-0' :
+                    index < currentSlide ? '-translate-x-full' : 'translate-x-full'
+                  }`}
+                  style={{
+                    backgroundImage: `url('${image}')`
+                  }}
+                ></div>
+              ))}
+            </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:scale-110"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="w-6 h-6 text-white drop-shadow-lg" />
+            </button>
+
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:scale-110"
+              aria-label="Next image"
+            >
+              <ChevronRight className="w-6 h-6 text-white drop-shadow-lg" />
+            </button>
+
+            {/* Overlay to ensure better text readability */}
+            <div className="absolute inset-0 bg-white/20 dark:bg-black/20"></div>
+            <div className="container text-center relative z-10">
               <div className="inline-flex items-center space-x-2 bg-green-100/80 rounded-full px-4 py-2 text-sm font-medium text-green-800 mb-6">
                 <Leaf className="w-4 h-4" />
                 <span>Sistem Monitoring Terpadu</span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-                Selamat Datang di <span className="text-primary gradient-text">SiMontang</span>
+                Selamat Datang di <span className="text-primary gradient-text">SeMEsTA</span>
               </h1>
-              <p className="text-xl text-muted-foreground mb-44 max-w-1xl mx-auto">
+              <p className="text-xl text-foreground font-medium mb-28 max-w-1xl mx-auto drop-shadow-lg">
                 Sistem Monitoring & Evaluasi Tata Kelola Administrasi dan Teknis BPS Kabupaten Nganjuk
               </p>
-              {/* <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  size="lg" 
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  size="lg"
                   className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
                   onClick={() => selectMainCategory('storage')}
                 >
                   <Database className="w-5 h-5 mr-2" />
                   Data Storage System
                 </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
+                <Button
+                  size="lg"
+                  variant="outline"
                   className="border-green-300 text-green-700 hover:bg-green-50"
                   onClick={() => selectMainCategory('official')}
                 >
                   <Globe className="w-5 h-5 mr-2" />
                   Official Website
                 </Button>
-              </div> */}
+              </div>
+            </div>
+
+            {/* Pagination Dots */}
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
+              {heroImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentSlide
+                      ? 'bg-white scale-125 shadow-lg'
+                      : 'bg-white/50 hover:bg-white/75'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
           </section>
 
@@ -388,7 +469,7 @@ export default function Index() {
             
             <div className="flex items-center space-x-2">
               <img 
-                src="/assets/images/bps-nganjuk.png" 
+                src="/assets/images/logo.png" 
                 alt="Logo BPS Nganjuk" 
                 className="w-8 h-8 object-contain"
                 onError={(e) => {
@@ -402,8 +483,8 @@ export default function Index() {
                 <BarChart3 className="w-5 h-5 text-white" />
               </div>
               <h1 className="text-2xl font-bold">
-                <span className="text-primary">Si</span>
-                <span className="text-foreground">Montang</span>
+                <span className="text-primary">Se</span>
+                <span className="text-foreground">MEsTA</span>
               </h1>
             </div>
           </div>
@@ -579,9 +660,9 @@ export default function Index() {
           <div className="text-center">
             <div className="flex items-center justify-center space-x-2 mb-4">
               <img 
-                src="/assets/images/bps-nganjuk.png" 
+                src="/assets/images/logo.png" 
                 alt="Logo BPS Nganjuk" 
-                className="w-8 h-8 object-contain bg-white rounded-lg p-1"
+                className="w-8 h-8 object-contain"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = 'none';
@@ -593,7 +674,7 @@ export default function Index() {
                 <BarChart3 className="w-5 h-5 text-green-600" />
               </div>
               <h3 className="text-2xl font-bold">
-                <span className="text-green-300">Si</span>Montang
+                <span className="text-green-300">Se</span>MEsTA
               </h3>
             </div>
             <p className="text-green-100 mb-6 max-w-2xl mx-auto">
