@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 159 61% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 159 61% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 159 61% 15%;
+
+    --primary: 159 61% 25%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 152 46% 94%;
+    --secondary-foreground: 159 61% 25%;
+
+    --muted: 152 46% 94%;
+    --muted-foreground: 159 20% 46%;
+
+    --accent: 152 46% 94%;
+    --accent-foreground: 159 61% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 152 30% 88%;
+    --input: 152 30% 88%;
+    --ring: 159 61% 25%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 210 30% 8%;
+    --foreground: 150 30% 95%;
+
+    --card: 210 25% 12%;
+    --card-foreground: 150 20% 95%;
+
+    --popover: 210 25% 12%;
+    --popover-foreground: 150 20% 95%;
+
+    --primary: 150 50% 50%;
+    --primary-foreground: 210 30% 8%;
+
+    --secondary: 210 20% 18%;
+    --secondary-foreground: 150 15% 85%;
+
+    --muted: 210 20% 18%;
+    --muted-foreground: 150 10% 75%;
+
+    --accent: 150 40% 25%;
+    --accent-foreground: 150 15% 90%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 150 15% 95%;
+
+    --border: 210 15% 25%;
+    --input: 210 15% 25%;
+    --ring: 150 50% 60%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .backdrop-blur-glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent;
+  }
+}
