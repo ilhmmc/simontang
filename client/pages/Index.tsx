@@ -369,44 +369,44 @@ const subcategoryConfig = {
     administrative: {
       title: "Administrasi & Kepegawaian",
       icon: Users,
-      color: "text-emerald-600",
+      color: "text-yellow-600",
     },
     "data-management": {
       title: "Manajemen Data & Statistik",
       icon: BarChart3,
-      color: "text-green-600",
+      color: "text-yellow-600",
     },
     documentation: {
       title: "Dokumentasi & Arsip",
       icon: Archive,
-      color: "text-teal-600",
+      color: "text-yellow-700",
     },
     evaluation: {
       title: "Evaluasi & Monitoring",
       icon: Shield,
-      color: "text-lime-600",
+      color: "text-yellow-700",
     },
   },
   official: {
     "main-platforms": {
       title: "Platform Utama",
       icon: Globe,
-      color: "text-emerald-600",
+      color: "text-yellow-600",
     },
     financial: {
       title: "Sistem Keuangan",
       icon: DollarSign,
-      color: "text-green-600",
+      color: "text-yellow-600",
     },
     information: {
       title: "Sistem Informasi",
       icon: Settings,
-      color: "text-teal-600",
+      color: "text-yellow-700",
     },
     "data-records": {
       title: "Data & Rekaman",
       icon: FileText,
-      color: "text-lime-600",
+      color: "text-yellow-700",
     },
   },
 };
@@ -529,10 +529,10 @@ export default function Index() {
   }, [searchQuery, selectedView, selectedSubcategory]);
 
   const ServiceCard = ({ service }: { service: ServiceItem }) => (
-    <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-green-200/50 hover:border-green-300 dark:border-slate-600/50 dark:hover:border-green-400/50 bg-gradient-to-br from-white to-green-50/30 dark:from-slate-800 dark:to-slate-700/50">
+    <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-yellow-200/50 hover:border-yellow-300 dark:border-slate-600/50 dark:hover:border-yellow-400/50 bg-gradient-to-br from-white to-yellow-50/30 dark:from-slate-800 dark:to-slate-700/50">
       <CardContent className="p-6">
         <div className="flex items-start space-x-4">
-          <div className="text-3xl bg-green-100 dark:bg-green-800/50 rounded-full w-14 h-14 flex items-center justify-center group-hover:bg-green-200 dark:group-hover:bg-green-700/70 transition-colors">
+          <div className="text-3xl bg-yellow-100 dark:bg-yellow-800/50 rounded-full w-14 h-14 flex items-center justify-center group-hover:bg-yellow-200 dark:group-hover:bg-yellow-700/70 transition-colors">
             {service.icon}
           </div>
           <div className="flex-1">
@@ -545,7 +545,7 @@ export default function Index() {
             <Button
               variant="outline"
               size="sm"
-              className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 dark:border-slate-600 dark:hover:bg-green-600 dark:hover:border-green-500"
+              className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 dark:border-slate-600 dark:hover:bg-yellow-600 dark:hover:border-yellow-500"
               onClick={() => window.open(service.url, "_blank")}
             >
               Buka <ExternalLink className="w-3 h-3 ml-1" />
@@ -625,7 +625,7 @@ export default function Index() {
             {/* Overlay to ensure better text readability */}
             <div className="absolute inset-0 bg-white/20 dark:bg-black/20"></div>
             <div className="container text-center relative z-10">
-              <div className="inline-flex items-center space-x-2 bg-green-100/80 rounded-full px-4 py-2 text-sm font-medium text-green-800 mb-6">
+              <div className="inline-flex items-center space-x-2 bg-yellow-100/80 rounded-full px-4 py-2 text-sm font-medium text-yellow-800 mb-6">
                 <Leaf className="w-4 h-4" />
                 <span>Sistem Monitoring Terpadu</span>
               </div>
@@ -640,7 +640,7 @@ export default function Index() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+                  className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700"
                   onClick={() => selectMainCategory("storage")}
                 >
                   <Database className="w-5 h-5 mr-2" />
@@ -649,7 +649,7 @@ export default function Index() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-green-300 text-green-700 hover:bg-green-50"
+                  className="border-yellow-300 text-yellow-700 hover:bg-yellow-50"
                   onClick={() => selectMainCategory("official")}
                 >
                   <Globe className="w-5 h-5 mr-2" />
@@ -678,7 +678,7 @@ export default function Index() {
           {/* Overview Sections */}
           <div className="container py-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="text-center bg-green-50/30 dark:bg-slate-800/30 rounded-xl p-8 border border-green-200/30 dark:border-slate-600/30">
+              <div className="text-center bg-yellow-50/30 dark:bg-slate-800/30 rounded-xl p-8 border border-yellow-200/30 dark:border-slate-600/30">
                 <h2 className="text-2xl font-bold mb-4 flex items-center justify-center">
                   <Database className="w-6 h-6 mr-3 text-primary" />
                   Data Storage System
@@ -691,7 +691,7 @@ export default function Index() {
                   layanan tersedia
                 </p>
               </div>
-              <div className="text-center bg-emerald-50/30 dark:bg-slate-800/30 rounded-xl p-8 border border-emerald-200/30 dark:border-slate-600/30">
+              <div className="text-center bg-yellow-50/30 dark:bg-slate-800/30 rounded-xl p-8 border border-yellow-200/30 dark:border-slate-600/30">
                 <h2 className="text-2xl font-bold mb-4 flex items-center justify-center">
                   <Globe className="w-6 h-6 mr-3 text-primary" />
                   Official Website
@@ -721,9 +721,9 @@ export default function Index() {
 
       return (
         <div className="container py-8">
-          <div className="flex items-center mb-6 bg-green-50/50 dark:bg-slate-800/50 rounded-lg p-4 border border-green-200/30 dark:border-slate-600/30">
+          <div className="flex items-center mb-6 bg-yellow-50/50 dark:bg-slate-800/50 rounded-lg p-4 border border-yellow-200/30 dark:border-slate-600/30">
             <IconComponent
-              className={`w-6 h-6 mr-3 ${subcategoryData.color} dark:text-green-400`}
+              className={`w-6 h-6 mr-3 ${subcategoryData.color} dark:text-yellow-400`}
             />
             <h2 className="text-2xl font-bold text-foreground">
               {subcategoryData.title}
@@ -744,7 +744,7 @@ export default function Index() {
     // Render all subcategories for the selected main category
     return (
       <div className="container py-8">
-        <div className="text-center mb-12 bg-green-50/30 dark:bg-slate-800/30 rounded-xl p-8 border border-green-200/30 dark:border-slate-600/30">
+        <div className="text-center mb-12 bg-yellow-50/30 dark:bg-slate-800/30 rounded-xl p-8 border border-yellow-200/30 dark:border-slate-600/30">
           <h2 className="text-3xl font-bold mb-4 flex items-center justify-center">
             {currentCategory === "storage" ? (
               <>
@@ -773,9 +773,9 @@ export default function Index() {
 
           return (
             <div key={key} className="mb-12">
-              <div className="flex items-center mb-6 bg-green-50/50 dark:bg-slate-800/50 rounded-lg p-4 border border-green-200/30 dark:border-slate-600/30">
+              <div className="flex items-center mb-6 bg-yellow-50/50 dark:bg-slate-800/50 rounded-lg p-4 border border-yellow-200/30 dark:border-slate-600/30">
                 <IconComponent
-                  className={`w-6 h-6 mr-3 ${data.color} dark:text-green-400`}
+                  className={`w-6 h-6 mr-3 ${data.color} dark:text-yellow-400`}
                 />
                 <h3 className="text-xl font-bold text-foreground">
                   {data.title}
@@ -797,22 +797,22 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50/30 via-white to-emerald-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-green-900/20 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50/30 via-white to-yellow-100/30 dark:from-slate-900 dark:via-slate-800 dark:to-yellow-900/20 relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-green-200/20 dark:bg-green-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-40 right-20 w-48 h-48 bg-emerald-200/15 dark:bg-emerald-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-40 left-20 w-40 h-40 bg-teal-200/20 dark:bg-teal-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-yellow-200/20 dark:bg-yellow-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-40 right-20 w-48 h-48 bg-yellow-300/15 dark:bg-yellow-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-40 left-20 w-40 h-40 bg-yellow-200/20 dark:bg-yellow-400/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-36 h-36 bg-lime-200/15 dark:bg-lime-400/10 rounded-full blur-3xl"></div>
 
         {/* Leaf decorations */}
-        <Leaf className="absolute top-32 right-1/4 w-8 h-8 text-green-300/30 dark:text-green-400/40 transform rotate-45" />
-        <Leaf className="absolute bottom-1/3 left-1/4 w-6 h-6 text-emerald-300/30 dark:text-emerald-400/40 transform -rotate-12" />
-        <Leaf className="absolute top-1/2 right-16 w-5 h-5 text-teal-300/30 dark:text-teal-400/40 transform rotate-90" />
+        <Leaf className="absolute top-32 right-1/4 w-8 h-8 text-yellow-300/30 dark:text-yellow-400/40 transform rotate-45" />
+        <Leaf className="absolute bottom-1/3 left-1/4 w-6 h-6 text-yellow-400/30 dark:text-yellow-400/40 transform -rotate-12" />
+        <Leaf className="absolute top-1/2 right-16 w-5 h-5 text-yellow-300/30 dark:text-yellow-400/40 transform rotate-90" />
       </div>
 
       {/* Top Navbar */}
-      <header className="sticky top-0 z-50 w-full border-b bg-white/80 dark:bg-slate-900/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-900/70 border-green-200/50 dark:border-slate-700/50">
+      <header className="sticky top-0 z-50 w-full border-b bg-white/80 dark:bg-slate-900/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-900/70 border-yellow-200/50 dark:border-slate-700/50">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center space-x-4">
             <Button
@@ -836,7 +836,7 @@ export default function Index() {
                   if (fallback) fallback.style.display = "flex";
                 }}
               />
-              <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg items-center justify-center hidden">
+              <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg items-center justify-center hidden">
                 <BarChart3 className="w-5 h-5 text-white" />
               </div>
               <h1 className="text-2xl font-bold">
@@ -853,7 +853,7 @@ export default function Index() {
                 placeholder="Cari layanan..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 w-72 border-green-200 focus:border-green-400"
+                className="pl-10 w-72 border-yellow-200 focus:border-yellow-400"
               />
             </div>
 
@@ -861,7 +861,7 @@ export default function Index() {
               variant="ghost"
               size="sm"
               onClick={toggleDarkMode}
-              className="flex items-center hover:bg-green-100 dark:hover:bg-slate-700/50"
+              className="flex items-center hover:bg-yellow-100 dark:hover:bg-slate-700/50"
               aria-label="Toggle dark mode"
             >
               {isDarkMode ? (
@@ -879,7 +879,7 @@ export default function Index() {
         <aside
           className={`
           fixed lg:sticky top-16 left-0 z-40 w-80 h-[calc(100vh-4rem)]
-          bg-white/95 dark:bg-slate-900/95 border-r border-green-200/50 dark:border-slate-700/50
+          bg-white/95 dark:bg-slate-900/95 border-r border-yellow-200/50 dark:border-slate-700/50
           backdrop-blur-md transition-transform duration-300 ease-in-out
           ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
         `}
@@ -889,7 +889,7 @@ export default function Index() {
               {/* Home */}
               <Button
                 variant={selectedView === "home" ? "default" : "ghost"}
-                className={`w-full justify-start ${selectedView === "home" ? "bg-green-600 text-white" : "hover:bg-green-50 dark:hover:bg-slate-700"}`}
+                className={`w-full justify-start ${selectedView === "home" ? "bg-yellow-500 text-black" : "hover:bg-yellow-50 dark:hover:bg-slate-700"}`}
                 onClick={() => selectMainCategory("home")}
               >
                 <Home className="w-4 h-4 mr-2" />
@@ -900,7 +900,7 @@ export default function Index() {
               <div>
                 <Button
                   variant="ghost"
-                  className="w-full justify-between hover:bg-green-50 dark:hover:bg-slate-700"
+                  className="w-full justify-between hover:bg-yellow-50 dark:hover:bg-slate-700"
                   onClick={() => toggleMenu("storage")}
                 >
                   <div className="flex items-center">
@@ -919,7 +919,7 @@ export default function Index() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className={`w-full justify-start text-sm ${selectedView === "storage" && !selectedSubcategory ? "bg-green-100 dark:bg-green-900/50" : "hover:bg-green-50 dark:hover:bg-slate-700"}`}
+                      className={`w-full justify-start text-sm ${selectedView === "storage" && !selectedSubcategory ? "bg-yellow-100 dark:bg-yellow-900/50" : "hover:bg-yellow-50 dark:hover:bg-slate-700"}`}
                       onClick={() => selectMainCategory("storage")}
                     >
                       Lihat Semua
@@ -932,7 +932,7 @@ export default function Index() {
                             key={key}
                             variant="ghost"
                             size="sm"
-                            className={`w-full justify-start text-xs leading-relaxed py-2 h-auto ${selectedView === "storage" && selectedSubcategory === key ? "bg-green-100 dark:bg-green-900/50" : "hover:bg-green-50 dark:hover:bg-slate-700"}`}
+                            className={`w-full justify-start text-xs leading-relaxed py-2 h-auto ${selectedView === "storage" && selectedSubcategory === key ? "bg-yellow-100 dark:bg-yellow-900/50" : "hover:bg-yellow-50 dark:hover:bg-slate-700"}`}
                             onClick={() => selectSubcategory("storage", key)}
                           >
                             <IconComponent className="w-3 h-3 mr-2 flex-shrink-0" />
@@ -951,7 +951,7 @@ export default function Index() {
               <div>
                 <Button
                   variant="ghost"
-                  className="w-full justify-between hover:bg-green-50 dark:hover:bg-slate-700"
+                  className="w-full justify-between hover:bg-yellow-50 dark:hover:bg-slate-700"
                   onClick={() => toggleMenu("official")}
                 >
                   <div className="flex items-center">
@@ -970,7 +970,7 @@ export default function Index() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className={`w-full justify-start text-sm ${selectedView === "official" && !selectedSubcategory ? "bg-green-100 dark:bg-green-900/50" : "hover:bg-green-50 dark:hover:bg-slate-700"}`}
+                      className={`w-full justify-start text-sm ${selectedView === "official" && !selectedSubcategory ? "bg-yellow-100 dark:bg-yellow-900/50" : "hover:bg-yellow-50 dark:hover:bg-slate-700"}`}
                       onClick={() => selectMainCategory("official")}
                     >
                       Lihat Semua
@@ -983,7 +983,7 @@ export default function Index() {
                             key={key}
                             variant="ghost"
                             size="sm"
-                            className={`w-full justify-start text-xs leading-relaxed py-2 h-auto ${selectedView === "official" && selectedSubcategory === key ? "bg-green-100 dark:bg-green-900/50" : "hover:bg-green-50 dark:hover:bg-slate-700"}`}
+                            className={`w-full justify-start text-xs leading-relaxed py-2 h-auto ${selectedView === "official" && selectedSubcategory === key ? "bg-yellow-100 dark:bg-yellow-900/50" : "hover:bg-yellow-50 dark:hover:bg-slate-700"}`}
                             onClick={() => selectSubcategory("official", key)}
                           >
                             <IconComponent className="w-3 h-3 mr-2 flex-shrink-0" />
@@ -1012,14 +1012,14 @@ export default function Index() {
         {/* Main Content */}
         <main className="flex-1 lg:ml-0 relative z-10">
           {/* Mobile Search */}
-          <div className="lg:hidden p-4 border-b border-green-200/50 dark:border-slate-700/50">
+          <div className="lg:hidden p-4 border-b border-yellow-200/50 dark:border-slate-700/50">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
                 placeholder="Cari layanan..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 border-green-200 focus:border-green-400"
+                className="pl-10 border-yellow-200 focus:border-yellow-400"
               />
             </div>
           </div>
@@ -1029,7 +1029,7 @@ export default function Index() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-green-900 to-emerald-900 dark:from-slate-900 dark:to-green-900 text-white py-12 relative overflow-hidden">
+      <footer className="bg-gradient-to-r from-yellow-700 to-yellow-800 dark:from-slate-900 dark:to-yellow-900 text-white py-12 relative overflow-hidden">
         <div className="absolute inset-0 bg-black/20 dark:bg-black/40"></div>
         <div className="container relative z-10">
           <div className="text-center">
@@ -1046,18 +1046,18 @@ export default function Index() {
                 }}
               />
               <div className="w-8 h-8 bg-white rounded-lg items-center justify-center hidden">
-                <BarChart3 className="w-5 h-5 text-green-600" />
+                <BarChart3 className="w-5 h-5 text-yellow-600" />
               </div>
               <h3 className="text-2xl font-bold">
-                <span className="text-green-300">Se</span>MAr
+                <span className="text-yellow-300">Se</span>MAr
               </h3>
             </div>
-            <p className="text-green-100 mb-6 max-w-2xl mx-auto">
+            <p className="text-yellow-100 mb-6 max-w-2xl mx-auto">
               Sistem Monitoring & Evaluasi Tata Kelola Administrasi dan Teknis
               BPS Kabupaten Nganjuk
             </p>
-            <div className="border-t border-green-700 pt-6">
-              <p className="text-sm text-green-200">
+            <div className="border-t border-yellow-600 pt-6">
+              <p className="text-sm text-yellow-200">
                 © 2025 BPS Kabupaten Nganjuk. Semua hak cipta dilindungi.
               </p>
             </div>
