@@ -633,7 +633,7 @@ export default function Index() {
                 Selamat Datang di{" "}
                 <span className="text-primary gradient-text">SeMAr</span>
               </h1>
-              <p className="text-xl text-foreground font-medium mb-28 max-w-1xl mx-auto drop-shadow-lg">
+              <p className="text-xl text-foreground font-medium mb-16 max-w-1xl mx-auto drop-shadow-lg">
                 Sistem Monitoring & Evaluasi Tata Kelola Administrasi dan Teknis
                 BPS Kabupaten Nganjuk
               </p>

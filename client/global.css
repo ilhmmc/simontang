@@ -129,4 +129,49 @@
   .gradient-text {
     @apply bg-gradient-to-r from-primary to-yellow-600 bg-clip-text text-transparent;
   }
+
+  /* Wayang-themed utilities */
+  .wayang-decoration {
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .wayang-float {
+    animation: wayangFloat 6s ease-in-out infinite;
+  }
+
+  .wayang-glow {
+    filter: drop-shadow(0 0 8px rgba(255, 222, 89, 0.3));
+  }
+
+  .wayang-shadow {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  }
+
+  .wayang-border {
+    border-image: linear-gradient(45deg, #ffde59, #fbbf24) 1;
+  }
+
+  @keyframes wayangFloat {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-8px) rotate(1deg);
+    }
+    66% {
+      transform: translateY(-4px) rotate(-1deg);
+    }
+  }
+
+  @keyframes wayangPulse {
+    0%, 100% {
+      opacity: 0.05;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.15;
+      transform: scale(1.05);
+    }
+  }
 }
