@@ -529,14 +529,17 @@ export default function Index() {
   }, [searchQuery, selectedView, selectedSubcategory]);
 
   const ServiceCard = ({ service }: { service: ServiceItem }) => (
-    <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-yellow-200/50 hover:border-yellow-300 dark:border-slate-600/50 dark:hover:border-yellow-400/50 bg-gradient-to-br from-white to-yellow-50/30 dark:from-slate-800 dark:to-slate-700/50">
+    <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 wayang-border hover:wayang-glow wayang-texture backdrop-blur-sm relative overflow-hidden">
+      <div className="absolute top-1 right-1 wayang-decoration">
+        <img src="/assets/images/wayang-pattern5.png" alt="" className="w-6 h-6 opacity-10 wayang-float" />
+      </div>
       <CardContent className="p-6">
         <div className="flex items-start space-x-4">
-          <div className="text-3xl bg-yellow-100 dark:bg-yellow-800/50 rounded-full w-14 h-14 flex items-center justify-center group-hover:bg-yellow-200 dark:group-hover:bg-yellow-700/70 transition-colors">
+          <div className="text-3xl wayang-gradient rounded-full w-14 h-14 flex items-center justify-center group-hover:wayang-glow transition-all wayang-shadow">
             {service.icon}
           </div>
           <div className="flex-1">
-            <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors mb-1">
+            <h3 className="font-semibold text-lg text-foreground group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors mb-1">
               {service.title}
             </h3>
             <p className="text-muted-foreground text-sm line-clamp-2 mb-3">
@@ -545,7 +548,7 @@ export default function Index() {
             <Button
               variant="outline"
               size="sm"
-              className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 dark:border-slate-600 dark:hover:bg-yellow-600 dark:hover:border-yellow-500"
+              className="wayang-border bg-white/80 dark:bg-slate-800/80 text-amber-700 dark:text-amber-300 hover:wayang-gradient hover:text-white transition-all duration-300"
               onClick={() => window.open(service.url, "_blank")}
             >
               Buka <ExternalLink className="w-3 h-3 ml-1" />
@@ -585,24 +588,31 @@ export default function Index() {
       return (
         <>
           {/* Hero Section */}
-          <section className="relative py-8 px-4 h-[80vh] flex items-center overflow-hidden">
+          <section className="relative py-8 px-4 h-[92.4vh] flex items-center overflow-hidden">
             {/* Background Image Carousel */}
             <div className="absolute inset-0">
               {heroImages.map((image, index) => (
                 <div
                   key={index}
-                  className={`absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50 transition-transform duration-1000 ease-in-out ${
-                    index === currentSlide
+                  className={`absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 transition-transform duration-1000 ease-in-out ${index === currentSlide
                       ? "translate-x-0"
                       : index < currentSlide
                         ? "-translate-x-full"
                         : "translate-x-full"
-                  }`}
+                    }`}
                   style={{
                     backgroundImage: `url('${image}')`,
                   }}
                 ></div>
               ))}
+            </div>
+
+            {/* Wayang-themed decorative overlay */}
+            <div className="absolute inset-0">
+              <img src="/assets/images/wayang-pattern1.png" alt="" className="absolute top-10 left-10 w-20 h-20 wayang-decoration wayang-float opacity-20" />
+              <img src="/assets/images/wayang2.png" alt="" className="absolute top-20 right-20 w-24 h-30 wayang-decoration wayang-float-slow wayang-glow opacity-30" />
+              <img src="/assets/images/wayang-pattern3.png" alt="" className="absolute bottom-20 left-20 w-18 h-18 wayang-decoration wayang-float opacity-25" />
+              <img src="/assets/images/wayang4.png" alt="" className="absolute bottom-30 right-30 w-20 h-25 wayang-decoration wayang-float-slow wayang-shadow opacity-35" />
             </div>
 
             {/* Navigation Arrows */}
@@ -623,15 +633,16 @@ export default function Index() {
             </button>
 
             {/* Overlay to ensure better text readability */}
-            <div className="absolute inset-0 bg-white/20 dark:bg-black/20"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-50/30 via-yellow-50/20 to-orange-50/30 dark:bg-gradient-to-br dark:from-amber-900/20 dark:via-yellow-900/15 dark:to-orange-900/20"></div>
             <div className="container text-center relative z-10">
-              <div className="inline-flex items-center space-x-2 bg-yellow-100/80 rounded-full px-4 py-2 text-sm font-medium text-yellow-800 mb-6">
-                <Leaf className="w-4 h-4" />
-                <span>Sistem Monitoring Terpadu</span>
+              <div className="inline-flex items-center space-x-2 wayang-gradient rounded-full px-6 py-3 text-sm font-medium text-white mb-8 wayang-shadow">
+                <img src="/assets/images/logo-semar-coklat.png" alt="" className="w-5 h-6" />
+                <span>Sistem Monitoring & Evaluasi</span>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+              <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 wayang-shadow">
                 Selamat Datang di{" "}
-                <span className="text-primary gradient-text">SeMAr</span>
+                <span className="text-amber-600 dark:text-amber-400">Se</span>
+                <span className="text-foreground">MAr</span>
               </h1>
               <p className="text-xl text-foreground font-medium mb-16 max-w-1xl mx-auto drop-shadow-lg">
                 Sistem Monitoring & Evaluasi Tata Kelola Administrasi dan Teknis
@@ -640,7 +651,7 @@ export default function Index() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700"
+                  className="wayang-gradient hover:opacity-90 transition-all wayang-shadow text-white border-2 border-amber-300/50"
                   onClick={() => selectMainCategory("storage")}
                 >
                   <Database className="w-5 h-5 mr-2" />
@@ -649,7 +660,7 @@ export default function Index() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-yellow-300 text-yellow-700 hover:bg-yellow-50"
+                  className="wayang-border bg-white/80 dark:bg-slate-800/80 text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-900/30 backdrop-blur-sm"
                   onClick={() => selectMainCategory("official")}
                 >
                   <Globe className="w-5 h-5 mr-2" />
@@ -664,11 +675,10 @@ export default function Index() {
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentSlide
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide
                       ? "bg-white scale-125 shadow-lg"
                       : "bg-white/50 hover:bg-white/75"
-                  }`}
+                    }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
@@ -676,36 +686,7 @@ export default function Index() {
           </section>
 
           {/* Overview Sections */}
-          <div className="container py-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="text-center bg-yellow-50/30 dark:bg-slate-800/30 rounded-xl p-8 border border-yellow-200/30 dark:border-slate-600/30">
-                <h2 className="text-2xl font-bold mb-4 flex items-center justify-center">
-                  <Database className="w-6 h-6 mr-3 text-primary" />
-                  Data Storage System
-                </h2>
-                <p className="text-muted-foreground mb-4">
-                  Tempat Penyimpanan Data Administrasi Kegiatan di BPS Nganjuk
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {services.filter((s) => s.category === "storage").length}{" "}
-                  layanan tersedia
-                </p>
-              </div>
-              <div className="text-center bg-yellow-50/30 dark:bg-slate-800/30 rounded-xl p-8 border border-yellow-200/30 dark:border-slate-600/30">
-                <h2 className="text-2xl font-bold mb-4 flex items-center justify-center">
-                  <Globe className="w-6 h-6 mr-3 text-primary" />
-                  Official Website
-                </h2>
-                <p className="text-muted-foreground mb-4">
-                  Shortcut yang terhubung dengan website resmi pemerintah
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {services.filter((s) => s.category === "official").length}{" "}
-                  layanan tersedia
-                </p>
-              </div>
-            </div>
-          </div>
+
         </>
       );
     }
@@ -812,8 +793,11 @@ export default function Index() {
       </div>
 
       {/* Top Navbar */}
-      <header className="sticky top-0 z-50 w-full border-b bg-white/80 dark:bg-slate-900/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-900/70 border-yellow-200/50 dark:border-slate-700/50">
-        <div className="container flex h-16 items-center justify-between">
+      <header className="sticky top-0 z-50 w-full wayang-border wayang-texture backdrop-blur-md supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-900/70 wayang-shadow relative overflow-hidden">
+        <div className="absolute top-1 right-4 wayang-decoration">
+          <img src="/assets/images/wayang-pattern1.png" alt="" className="w-4 h-4 opacity-20 wayang-float" />
+        </div>
+        <div className="container flex h-14 items-center justify-between">
           <div className="flex items-center space-x-4">
             <Button
               variant="ghost"
@@ -836,11 +820,11 @@ export default function Index() {
                   if (fallback) fallback.style.display = "flex";
                 }}
               />
-              <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg items-center justify-center hidden">
+              <div className="w-8 h-8 wayang-gradient rounded-lg items-center justify-center hidden">
                 <BarChart3 className="w-5 h-5 text-white" />
               </div>
               <h1 className="text-2xl font-bold">
-                <span className="text-primary">Se</span>
+                <span className="text-amber-600 dark:text-amber-400">Se</span>
                 <span className="text-foreground">MAr</span>
               </h1>
             </div>
@@ -878,9 +862,9 @@ export default function Index() {
         {/* Sidebar */}
         <aside
           className={`
-          fixed lg:sticky top-16 left-0 z-40 w-80 h-[calc(100vh-4rem)]
-          bg-white/95 dark:bg-slate-900/95 border-r border-yellow-200/50 dark:border-slate-700/50
-          backdrop-blur-md transition-transform duration-300 ease-in-out
+          fixed lg:sticky top-14 left-0 z-40 w-80 h-[calc(100vh-3.5rem)]
+          wayang-texture wayang-border
+          backdrop-blur-md transition-transform duration-300 ease-in-out wayang-shadow
           ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
         `}
         >
@@ -889,7 +873,7 @@ export default function Index() {
               {/* Home */}
               <Button
                 variant={selectedView === "home" ? "default" : "ghost"}
-                className={`w-full justify-start ${selectedView === "home" ? "bg-yellow-500 text-black" : "hover:bg-yellow-50 dark:hover:bg-slate-700"}`}
+                className={`w-full justify-start ${selectedView === "home" ? "wayang-gradient text-white wayang-shadow" : "hover:bg-amber-50 dark:hover:bg-slate-700"}`}
                 onClick={() => selectMainCategory("home")}
               >
                 <Home className="w-4 h-4 mr-2" />
@@ -900,7 +884,7 @@ export default function Index() {
               <div>
                 <Button
                   variant="ghost"
-                  className="w-full justify-between hover:bg-yellow-50 dark:hover:bg-slate-700"
+                  className="w-full justify-between hover:bg-amber-50 dark:hover:bg-slate-700"
                   onClick={() => toggleMenu("storage")}
                 >
                   <div className="flex items-center">
@@ -919,7 +903,7 @@ export default function Index() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className={`w-full justify-start text-sm ${selectedView === "storage" && !selectedSubcategory ? "bg-yellow-100 dark:bg-yellow-900/50" : "hover:bg-yellow-50 dark:hover:bg-slate-700"}`}
+                      className={`w-full justify-start text-sm py-2 ${selectedView === "storage" && !selectedSubcategory ? "wayang-gradient text-white" : "hover:bg-amber-100 dark:hover:bg-slate-700"}`}
                       onClick={() => selectMainCategory("storage")}
                     >
                       Lihat Semua
@@ -932,7 +916,7 @@ export default function Index() {
                             key={key}
                             variant="ghost"
                             size="sm"
-                            className={`w-full justify-start text-xs leading-relaxed py-2 h-auto ${selectedView === "storage" && selectedSubcategory === key ? "bg-yellow-100 dark:bg-yellow-900/50" : "hover:bg-yellow-50 dark:hover:bg-slate-700"}`}
+                            className={`w-full justify-start text-xs leading-relaxed py-2 h-auto ${selectedView === "storage" && selectedSubcategory === key ? "bg-amber-100 dark:bg-amber-900/50" : "hover:bg-amber-50 dark:hover:bg-slate-700"}`}
                             onClick={() => selectSubcategory("storage", key)}
                           >
                             <IconComponent className="w-3 h-3 mr-2 flex-shrink-0" />
@@ -951,7 +935,7 @@ export default function Index() {
               <div>
                 <Button
                   variant="ghost"
-                  className="w-full justify-between hover:bg-yellow-50 dark:hover:bg-slate-700"
+                  className="w-full justify-between hover:bg-amber-50 dark:hover:bg-slate-700"
                   onClick={() => toggleMenu("official")}
                 >
                   <div className="flex items-center">
@@ -970,7 +954,7 @@ export default function Index() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className={`w-full justify-start text-sm ${selectedView === "official" && !selectedSubcategory ? "bg-yellow-100 dark:bg-yellow-900/50" : "hover:bg-yellow-50 dark:hover:bg-slate-700"}`}
+                      className={`w-full justify-start text-sm py-2 ${selectedView === "official" && !selectedSubcategory ? "wayang-gradient text-white" : "hover:bg-amber-100 dark:hover:bg-slate-700"}`}
                       onClick={() => selectMainCategory("official")}
                     >
                       Lihat Semua
@@ -983,7 +967,7 @@ export default function Index() {
                             key={key}
                             variant="ghost"
                             size="sm"
-                            className={`w-full justify-start text-xs leading-relaxed py-2 h-auto ${selectedView === "official" && selectedSubcategory === key ? "bg-yellow-100 dark:bg-yellow-900/50" : "hover:bg-yellow-50 dark:hover:bg-slate-700"}`}
+                            className={`w-full justify-start text-xs leading-relaxed py-2 h-auto ${selectedView === "official" && selectedSubcategory === key ? "bg-amber-100 dark:bg-amber-900/50" : "hover:bg-amber-50 dark:hover:bg-slate-700"}`}
                             onClick={() => selectSubcategory("official", key)}
                           >
                             <IconComponent className="w-3 h-3 mr-2 flex-shrink-0" />
@@ -1012,7 +996,7 @@ export default function Index() {
         {/* Main Content */}
         <main className="flex-1 lg:ml-0 relative z-10">
           {/* Mobile Search */}
-          <div className="lg:hidden p-4 border-b border-yellow-200/50 dark:border-slate-700/50">
+          <div className="lg:hidden p-3 border-b border-yellow-200/50 dark:border-slate-700/50">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
@@ -1029,8 +1013,14 @@ export default function Index() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-yellow-700 to-yellow-800 dark:from-slate-900 dark:to-yellow-900 text-white py-12 relative overflow-hidden">
+      <footer className="wayang-gradient text-white py-12 relative overflow-hidden wayang-shadow">
         <div className="absolute inset-0 bg-black/20 dark:bg-black/40"></div>
+        <div className="absolute top-4 left-4 wayang-decoration">
+          <img src="/assets/images/wayang-pattern2.png" alt="" className="w-8 h-8 opacity-30 wayang-float" />
+        </div>
+        <div className="absolute bottom-4 right-4 wayang-decoration">
+          <img src="/assets/images/wayang5.png" alt="" className="w-10 h-12 opacity-40 wayang-float-slow" />
+        </div>
         <div className="container relative z-10">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-2 mb-4">
@@ -1049,7 +1039,7 @@ export default function Index() {
                 <BarChart3 className="w-5 h-5 text-yellow-600" />
               </div>
               <h3 className="text-2xl font-bold">
-                <span className="text-yellow-300">Se</span>MAr
+                <span className="text-amber-200">Se</span>MAr
               </h3>
             </div>
             <p className="text-yellow-100 mb-6 max-w-2xl mx-auto">
