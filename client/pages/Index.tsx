@@ -609,10 +609,12 @@ export default function Index() {
 
             {/* Wayang-themed decorative overlay */}
             <div className="absolute inset-0">
-              <img src="/assets/images/wayang-pattern1.png" alt="" className="absolute top-10 left-10 w-20 h-20 wayang-decoration wayang-float opacity-20" />
-              <img src="/assets/images/wayang2.png" alt="" className="absolute top-20 right-20 w-24 h-30 wayang-decoration wayang-float-slow wayang-glow opacity-30" />
+              <img src="/assets/images/wayang-pattern1.png" alt="" className="absolute top-5 left-5 w-40 h-40 wayang-decoration wayang-float opacity-20" />
+              <img src="/assets/images/wayang2.png" alt="" className="absolute top-1 right-5 w-48 h-48 wayang-decoration wayang-float-slow wayang-glow opacity-30" />
               <img src="/assets/images/wayang-pattern3.png" alt="" className="absolute bottom-20 left-20 w-18 h-18 wayang-decoration wayang-float opacity-25" />
-              <img src="/assets/images/wayang4.png" alt="" className="absolute bottom-30 right-30 w-20 h-25 wayang-decoration wayang-float-slow wayang-shadow opacity-35" />
+              <img src="/assets/images/wayang-pattern5.png" alt="" className="absolute bottom-20 right-20 w-18 h-18 wayang-decoration wayang-float opacity-25" />
+              <img src="/assets/images/wayang4.png" alt="" className="absolute bottom-2 left-5 w-40 h-50 wayang-decoration wayang-float-slow wayang-shadow opacity-35" />
+              <img src="/assets/images/wayang3.png" alt="" className="absolute bottom-2 right-5 w-40 h-50 wayang-decoration wayang-float-slow wayang-shadow opacity-35" />
             </div>
 
             {/* Navigation Arrows */}
@@ -636,17 +638,16 @@ export default function Index() {
             <div className="absolute inset-0 bg-gradient-to-br from-amber-50/30 via-yellow-50/20 to-orange-50/30 dark:bg-gradient-to-br dark:from-amber-900/20 dark:via-yellow-900/15 dark:to-orange-900/20"></div>
             <div className="container text-center relative z-10">
               <div className="inline-flex items-center space-x-2 wayang-gradient rounded-full px-6 py-3 text-sm font-medium text-white mb-8 wayang-shadow">
-                <img src="/assets/images/logo-semar-coklat.png" alt="" className="w-5 h-6" />
+                <img src="/assets/images/logo-semar.png" alt="" className="w-5 h-6" />
                 <span>Sistem Monitoring & Evaluasi</span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 wayang-shadow">
                 Selamat Datang di{" "}
-                <span className="text-amber-600 dark:text-amber-400">Se</span>
-                <span className="text-foreground">MAr</span>
+                <span className="text-amber-600 dark:text-amber-400">SEMAr </span>
+                <span className="text-foreground">MeSem</span>
               </h1>
               <p className="text-xl text-foreground font-medium mb-16 max-w-1xl mx-auto drop-shadow-lg">
-                Sistem Monitoring & Evaluasi Tata Kelola Administrasi dan Teknis
-                BPS Kabupaten Nganjuk
+                Sistem Evaluasi & Monitoring Administrasi untuk Menciptakan Sinergi Bersama
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
@@ -812,7 +813,7 @@ export default function Index() {
               <img
                 src="/assets/images/logo-semar.png"
                 alt="Logo SeMAr"
-                className="w-8 h-8 object-contain"
+                className="w-16 h-16 object-contain"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = "none";
@@ -824,8 +825,8 @@ export default function Index() {
                 <BarChart3 className="w-5 h-5 text-white" />
               </div>
               <h1 className="text-2xl font-bold">
-                <span className="text-amber-600 dark:text-amber-400">Se</span>
-                <span className="text-foreground">MAr</span>
+                <span className="text-amber-600 dark:text-amber-400">SEMAr </span>
+                <span className="text-foreground">MeSem</span>
               </h1>
             </div>
           </div>
@@ -1016,10 +1017,10 @@ export default function Index() {
       <footer className="wayang-gradient text-white py-12 relative overflow-hidden wayang-shadow">
         <div className="absolute inset-0 bg-black/20 dark:bg-black/40"></div>
         <div className="absolute top-4 left-4 wayang-decoration">
-          <img src="/assets/images/wayang-pattern2.png" alt="" className="w-8 h-8 opacity-30 wayang-float" />
+          <img src="/assets/images/wayang-pattern2.png" alt="" className="w-48 h-48 opacity-30 wayang-float" />
         </div>
         <div className="absolute bottom-4 right-4 wayang-decoration">
-          <img src="/assets/images/wayang5.png" alt="" className="w-10 h-12 opacity-40 wayang-float-slow" />
+          <img src="/assets/images/wayang5.png" alt="" className="w-48 h-54 opacity-40 wayang-float-slow" />
         </div>
         <div className="container relative z-10">
           <div className="text-center">
@@ -1046,7 +1047,7 @@ export default function Index() {
               Sistem Monitoring & Evaluasi Tata Kelola Administrasi dan Teknis
               BPS Kabupaten Nganjuk
             </p>
-            <div className="border-t border-yellow-600 pt-6">
+            <div className="border-t border-yellow-600 pt-3 max-w-2xl mx-auto">
               <p className="text-sm text-yellow-200">
                 © 2025 BPS Kabupaten Nganjuk. Semua hak cipta dilindungi.
               </p>
