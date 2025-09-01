@@ -143,7 +143,7 @@
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-primary to-yellow-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 dark:from-amber-300 dark:via-yellow-200 dark:to-orange-300 bg-clip-text text-transparent drop-shadow-sm;
   }
 
   /* Wayang-themed utilities */
