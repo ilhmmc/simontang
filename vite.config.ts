@@ -23,7 +23,6 @@ export default defineConfig(({ mode }) => ({
       "@shared": path.resolve(__dirname, "./shared"),
     },
   },
-  base: process.env.NODE_ENV || "/semar-mesem",
 }));
 
 function expressPlugin(): Plugin {
