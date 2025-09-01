@@ -14,15 +14,16 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    outDir: "dist",
+    outDir: "dist/spa",
   },
-  plugins: [react()],
+  plugins: [react(), expressPlugin()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./client"),
       "@shared": path.resolve(__dirname, "./shared"),
     },
   },
+  base: "./",
 }));
 
 function expressPlugin(): Plugin {
