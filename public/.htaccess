@@ -1,0 +1,11 @@
+# Force SPA routing for Vite builds on Apache (Niagahoster)
+Options -MultiViews
+RewriteEngine On
+
+# Serve existing files/directories directly
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Fallback all other routes to index.html (React Router)
+RewriteRule . /index.html [L]

@@ -424,9 +424,9 @@ export default function Index() {
   // Carousel state
   const [currentSlide, setCurrentSlide] = useState(0);
   const heroImages = [
-    "/assets/images/fotbar-bps-nganjuk.png",
-    "/assets/images/fotbar2-bps-nganjuk.png",
-    // '/assets/images/contoh-surat-tugas.jpg'
+    "assets/images/fotbar-bps-nganjuk.png",
+    "assets/images/fotbar2-bps-nganjuk.png",
+    // 'assets/images/contoh-surat-tugas.jpg'
   ];
 
   // Initialize dark mode from localStorage
@@ -531,7 +531,11 @@ export default function Index() {
   const ServiceCard = ({ service }: { service: ServiceItem }) => (
     <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 wayang-border hover:wayang-glow wayang-texture backdrop-blur-sm relative overflow-hidden">
       <div className="absolute top-1 right-1 wayang-decoration">
-        <img src="/assets/images/wayang-pattern5.png" alt="" className="w-6 h-6 opacity-10 wayang-float" />
+        <img
+          src="assets/images/wayang-pattern5.png"
+          alt=""
+          className="w-6 h-6 opacity-10 wayang-float"
+        />
       </div>
       <CardContent className="p-6">
         <div className="flex items-start space-x-4">
@@ -594,12 +598,13 @@ export default function Index() {
               {heroImages.map((image, index) => (
                 <div
                   key={index}
-                  className={`absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 transition-transform duration-1000 ease-in-out ${index === currentSlide
+                  className={`absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 transition-transform duration-1000 ease-in-out ${
+                    index === currentSlide
                       ? "translate-x-0"
                       : index < currentSlide
                         ? "-translate-x-full"
                         : "translate-x-full"
-                    }`}
+                  }`}
                   style={{
                     backgroundImage: `url('${image}')`,
                   }}
@@ -609,13 +614,29 @@ export default function Index() {
 
             {/* Wayang-themed decorative overlay */}
             <div className="absolute inset-0">
-              <img src="/assets/images/wayang-pattern1.png" alt="" className="absolute bottom-3 left-3 w-40 h-40 wayang-decoration wayang-float opacity-20" />
-              <img src="/assets/images/wayang-pattern1-mirror.png" alt="" className="absolute bottom-3 right-3 w-40 h-40 wayang-decoration wayang-float opacity-20" />
-              {/* <img src="/assets/images/wayang2.png" alt="" className="absolute top-1 right-5 w-48 h-48 wayang-decoration wayang-float-slow wayang-glow opacity-30" /> */}
-              <img src="/assets/images/wayang-pattern3.png" alt="" className="absolute bottom-21 left-20 w-18 h-18 wayang-decoration wayang-float opacity-25" />
-              <img src="/assets/images/wayang-pattern5.png" alt="" className="absolute bottom-21 right-20 w-18 h-18 wayang-decoration wayang-float opacity-25" />
-              {/* <img src="/assets/images/wayang4.png" alt="" className="absolute bottom-2 left-5 w-40 h-50 wayang-decoration wayang-float-slow wayang-shadow opacity-35" /> */}
-              {/* <img src="/assets/images/wayang3.png" alt="" className="absolute bottom-2 right-5 w-40 h-50 wayang-decoration wayang-float-slow wayang-shadow opacity-35" /> */}
+              <img
+                src="assets/images/wayang-pattern1.png"
+                alt=""
+                className="absolute bottom-3 left-3 w-40 h-40 wayang-decoration wayang-float opacity-20"
+              />
+              <img
+                src="assets/images/wayang-pattern1-mirror.png"
+                alt=""
+                className="absolute bottom-3 right-3 w-40 h-40 wayang-decoration wayang-float opacity-20"
+              />
+              {/* <img src="assets/images/wayang2.png" alt="" className="absolute top-1 right-5 w-48 h-48 wayang-decoration wayang-float-slow wayang-glow opacity-30" /> */}
+              <img
+                src="assets/images/wayang-pattern3.png"
+                alt=""
+                className="absolute bottom-21 left-20 w-18 h-18 wayang-decoration wayang-float opacity-25"
+              />
+              <img
+                src="assets/images/wayang-pattern5.png"
+                alt=""
+                className="absolute bottom-21 right-20 w-18 h-18 wayang-decoration wayang-float opacity-25"
+              />
+              {/* <img src="assets/images/wayang4.png" alt="" className="absolute bottom-2 left-5 w-40 h-50 wayang-decoration wayang-float-slow wayang-shadow opacity-35" /> */}
+              {/* <img src="assets/images/wayang3.png" alt="" className="absolute bottom-2 right-5 w-40 h-50 wayang-decoration wayang-float-slow wayang-shadow opacity-35" /> */}
             </div>
 
             {/* Navigation Arrows */}
@@ -639,7 +660,11 @@ export default function Index() {
             <div className="absolute inset-0 bg-gradient-to-br from-amber-50/30 via-yellow-50/20 to-orange-50/30 dark:bg-gradient-to-br dark:from-amber-900/20 dark:via-yellow-900/15 dark:to-orange-900/20"></div>
             <div className="container text-center relative z-10">
               <div className="inline-flex items-center space-x-2 wayang-gradient rounded-full px-6 py-3 text-sm font-medium text-white mb-8 wayang-shadow">
-                <img src="/assets/images/logo-semar.png" alt="" className="w-5 h-6" />
+                <img
+                  src="assets/images/logo-semar.png"
+                  alt=""
+                  className="w-5 h-6"
+                />
                 <span>Sistem Evaluasi & Monitoring Administrasi</span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 wayang-shadow">
@@ -647,7 +672,8 @@ export default function Index() {
                 <span className="gradient-text">SEMAR Mesem</span>
               </h1>
               <p className="text-xl text-foreground font-medium mb-16 max-w-1xl mx-auto drop-shadow-lg">
-                Sistem Evaluasi & Monitoring Administrasi untuk Menciptakan Sinergi Bersama BPS Kabupaten Nganjuk
+                Sistem Evaluasi & Monitoring Administrasi untuk Menciptakan
+                Sinergi Bersama BPS Kabupaten Nganjuk
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
@@ -676,10 +702,11 @@ export default function Index() {
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentSlide
                       ? "bg-white scale-125 shadow-lg"
                       : "bg-white/50 hover:bg-white/75"
-                    }`}
+                  }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
@@ -687,7 +714,6 @@ export default function Index() {
           </section>
 
           {/* Overview Sections */}
-
         </>
       );
     }
@@ -796,7 +822,11 @@ export default function Index() {
       {/* Top Navbar */}
       <header className="sticky top-0 z-50 w-full wayang-border wayang-texture backdrop-blur-md supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-900/70 wayang-shadow relative overflow-hidden">
         <div className="absolute top-1 right-4 wayang-decoration">
-          <img src="/assets/images/wayang-pattern1.png" alt="" className="w-4 h-4 opacity-20 wayang-float" />
+          <img
+            src="assets/images/wayang-pattern1.png"
+            alt=""
+            className="w-4 h-4 opacity-20 wayang-float"
+          />
         </div>
         <div className="container flex h-14 items-center justify-between">
           <div className="flex items-center space-x-4">
@@ -811,7 +841,7 @@ export default function Index() {
 
             <div className="flex items-center space-x-1">
               <img
-                src="/assets/images/logo-semar.png"
+                src="assets/images/logo-semar.png"
                 alt="Logo Semar Mesem"
                 className="w-16 h-16 object-contain"
                 onError={(e) => {
@@ -825,8 +855,13 @@ export default function Index() {
                 <BarChart3 className="w-5 h-5 text-white" />
               </div>
               <div className="leading-tight">
-                <h1 className="text-xl md:text-2xl font-bold gradient-text">SEMAR Mesem</h1>
-                <p className="text-[10px] sm:text-xs text-muted-foreground">Sistem Evaluasi & Monitoring Administrasi untuk Menciptakan Sinergi Bersama</p>
+                <h1 className="text-xl md:text-2xl font-bold gradient-text">
+                  SEMAR Mesem
+                </h1>
+                <p className="text-[10px] sm:text-xs text-muted-foreground">
+                  Sistem Evaluasi & Monitoring Administrasi untuk Menciptakan
+                  Sinergi Bersama
+                </p>
               </div>
             </div>
           </div>
@@ -1017,16 +1052,24 @@ export default function Index() {
       <footer className="wayang-gradient text-white py-12 relative overflow-hidden wayang-shadow">
         <div className="absolute inset-0 bg-black/20 dark:bg-black/40"></div>
         <div className="absolute top-4 left-4 wayang-decoration">
-          <img src="/assets/images/wayang-pattern2.png" alt="" className="w-48 h-48 opacity-30 wayang-float" />
+          <img
+            src="assets/images/wayang-pattern2.png"
+            alt=""
+            className="w-48 h-48 opacity-30 wayang-float"
+          />
         </div>
         <div className="absolute bottom-4 right-4 wayang-decoration">
-          <img src="/assets/images/wayang5.png" alt="" className="w-48 h-54 opacity-40 wayang-float-slow" />
+          <img
+            src="assets/images/wayang5.png"
+            alt=""
+            className="w-48 h-54 opacity-40 wayang-float-slow"
+          />
         </div>
         <div className="container relative z-10">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-2 mb-4">
               <img
-                src="/assets/images/logo-semar.png"
+                src="assets/images/logo-semar.png"
                 alt="Logo Semar Mesem"
                 className="w-8 h-8 object-contain"
                 onError={(e) => {
@@ -1044,7 +1087,8 @@ export default function Index() {
               </h3>
             </div>
             <p className="text-yellow-100 mb-6 max-w-2xl mx-auto">
-              Sistem Evaluasi & Monitoring Administrasi untuk Menciptakan Sinergi Bersama
+              Sistem Evaluasi & Monitoring Administrasi untuk Menciptakan
+              Sinergi Bersama
             </p>
             <div className="border-t border-yellow-600 pt-3 max-w-2xl mx-auto">
               <p className="text-sm text-yellow-200">
