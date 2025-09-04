@@ -316,7 +316,7 @@ const services: ServiceItem[] = [
     title: "SIMPEG",
     description: "Website Sistem Informasi Pegawai Resmi BPS",
     url: "https://simpeg.bps.go.id",
-    icon: "👤",
+    icon: "👥",
     category: "official",
     subcategory: "information",
   },
@@ -592,7 +592,7 @@ export default function Index() {
       return (
         <>
           {/* Hero Section */}
-          <section className="relative py-8 px-4 h-[92.4vh] flex items-center overflow-hidden">
+          <section className="relative py-8 px-4 md:h-[92.4vh] h-auto flex md:items-center items-start pt-16 md:pt-0 overflow-hidden">
             {/* Background Image Carousel */}
             <div className="absolute inset-0">
               {heroImages.map((image, index) => (
@@ -671,11 +671,11 @@ export default function Index() {
                 Selamat Datang di{" "}
                 <span className="gradient-text">SEMAR Mesem</span>
               </h1>
-              <p className="text-xl text-foreground font-medium mb-16 max-w-1xl mx-auto drop-shadow-lg">
+              <p className="text-lg md:text-xl text-foreground font-medium mb-8 md:mb-16 max-w-xl mx-auto drop-shadow-lg">
                 Sistem Evaluasi & Monitoring Administrasi untuk Menciptakan
                 Sinergi Bersama BPS Kabupaten Nganjuk
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center -mt-6 sm:mt-0">
                 <Button
                   size="lg"
                   className="wayang-gradient hover:opacity-90 transition-all wayang-shadow text-white border-2 border-amber-300/50"
@@ -829,7 +829,7 @@ export default function Index() {
           />
         </div>
         <div className="container flex h-14 items-center justify-between">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 -ml-7">
             <Button
               variant="ghost"
               size="sm"
@@ -839,7 +839,7 @@ export default function Index() {
               <Menu className="w-5 h-5" />
             </Button>
 
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center space-x-0.5 -ml-3">
               <img
                 src="assets/images/logo-semar.png"
                 alt="Logo Semar Mesem"
@@ -1083,7 +1083,7 @@ export default function Index() {
                 <BarChart3 className="w-5 h-5 text-yellow-600" />
               </div>
               <h3 className="text-2xl font-bold">
-                <span className="text-amber-200">Se</span>MAr
+                <span className="gradient-text">SEMAR Mesem</span>
               </h3>
             </div>
             <p className="text-yellow-100 mb-6 max-w-2xl mx-auto">
