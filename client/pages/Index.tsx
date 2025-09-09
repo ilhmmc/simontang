@@ -186,7 +186,7 @@ const services: ServiceItem[] = [
     title: "RAKORDA",
     description: "Materi Rakorda",
     url: "https://drive.google.com/drive/folders/1rBlh5UpuT-ZKE5fjQiM0r0gSKBGyTlq7",
-    icon: "🏛️",
+    icon: "🏛��",
     category: "storage",
     subcategory: "documentation",
   },
@@ -657,17 +657,44 @@ export default function Index() {
 
   const renderContent = () => {
     if (searchQuery) {
+      const filteredTeams = teams.filter((team) =>
+        team.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        team.url.toLowerCase().includes(searchQuery.toLowerCase()),
+      );
+
+      const totalResults = filteredServices.length + filteredTeams.length;
+
       return (
         <div>
           <h2 className="text-2xl font-bold mb-6">
-            Hasil Pencarian "{searchQuery}" ({filteredServices.length} layanan)
+            Hasil Pencarian "{searchQuery}" ({totalResults} hasil)
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredServices.map((service) => (
-              <ServiceCard key={service.title} service={service} />
-            ))}
-          </div>
-          {filteredServices.length === 0 && (
+
+          {totalResults > 0 ? (
+            <>
+              {filteredServices.length > 0 && (
+                <>
+                  <h3 className="text-lg font-medium mb-3">Layanan</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    {filteredServices.map((service) => (
+                      <ServiceCard key={service.title} service={service} />
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {filteredTeams.length > 0 && (
+                <>
+                  <h3 className="text-lg font-medium mb-3">Tim</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {filteredTeams.map((team) => (
+                      <TeamCard key={team.name} team={team} />
+                    ))}
+                  </div>
+                </>
+              )}
+            </>
+          ) : (
             <div className="text-center py-12">
               <div className="text-4xl mb-4">🔍</div>
               <h3 className="text-xl font-semibold mb-2">Tidak ditemukan</h3>
