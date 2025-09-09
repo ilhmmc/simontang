@@ -20,10 +20,16 @@ import {
   Sun,
   Home,
   ChevronLeft,
+  Megaphone,
+  Handshake,
+  Factory,
+  Truck,
+  ClipboardList,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 interface ServiceItem {
   title: string;
@@ -35,7 +41,7 @@ interface ServiceItem {
 }
 
 const services: ServiceItem[] = [
-  // Data Storage System - Administrative & Personnel
+  // ge System - Administrative & Personnel
   {
     title: "MITRA",
     description: "Data Mitra Statistik BPS Nganjuk",
@@ -268,6 +274,14 @@ const services: ServiceItem[] = [
     category: "official",
     subcategory: "main-platforms",
   },
+  {
+    title: "Dashboard SE2026",
+    description: "Dashboard Sensus Ekonomi 2026 (countdown & informasi)",
+    url: "#/se2026",
+    icon: "📊",
+    category: "official",
+    subcategory: "main-platforms",
+  },
 
   // Official Websites - Financial Systems
   {
@@ -411,6 +425,34 @@ const subcategoryConfig = {
   },
 };
 
+interface TeamItem {
+  name: string;
+  url: string;
+  icon: string;
+}
+
+const teams: TeamItem[] = [
+  { name: "Umum", url: "https://umum2025.my.canva.site/umum25", icon: "👥" },
+  { name: "Humas, Pojok Statistik, dan PSS", url: "https://umum2025.my.canva.site/humas2025", icon: "📣" },
+  { name: "IPDS", url: "https://lezitech.my.canva.site/tim-ipds", icon: "💾" },
+  { name: "Statistik Sosial", url: "https://s.id/sosial3518_2025", icon: "🤝" },
+  { name: "Statistik Produksi", url: "https://s.id/HANSO3518", icon: "🏭" },
+  { name: "Statistik Distribusi", url: "https://kostkeramik.my.canva.site/3518distribusi25", icon: "🚚" },
+  { name: "Nerwilis", url: "https://s.id/3518_nerwilis", icon: "📊" },
+  { name: "Sakip, ZI, dan EPSS", url: "https://s.id/rbzi-3518", icon: "🗂️" },
+];
+
+const teamIconMap: Record<string, any> = {
+  Umum: ClipboardList,
+  Humas: Megaphone,
+  IPDS: Database,
+  Sosial: Handshake,
+  Produksi: Factory,
+  Distribusi: Truck,
+  Nerwilis: BarChart3,
+  SAKIP: Shield,
+};
+
 export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -528,6 +570,18 @@ export default function Index() {
     return filtered;
   }, [searchQuery, selectedView, selectedSubcategory]);
 
+  const navigate = useNavigate();
+
+  const openService = (url: string) => {
+    if (/^https?:/i.test(url)) {
+      window.open(url, "_blank");
+    } else if (url.startsWith("#/")) {
+      window.location.hash = url.slice(1);
+    } else {
+      navigate(url);
+    }
+  };
+
   const ServiceCard = ({ service }: { service: ServiceItem }) => (
     <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 wayang-border hover:wayang-glow wayang-texture backdrop-blur-sm relative overflow-hidden">
       <div className="absolute top-1 right-1 wayang-decoration">
@@ -553,9 +607,47 @@ export default function Index() {
               variant="outline"
               size="sm"
               className="wayang-border bg-white/80 dark:bg-slate-800/80 text-amber-700 dark:text-amber-300 hover:wayang-gradient hover:text-white transition-all duration-300"
-              onClick={() => window.open(service.url, "_blank")}
+              onClick={() => openService(service.url)}
             >
               Buka <ExternalLink className="w-3 h-3 ml-1" />
+            </Button>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+
+  const TeamCard = ({ team }: { team: TeamItem }) => (
+    <Card
+      onClick={() => window.open(team.url, "_blank")}
+      className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 wayang-border hover:wayang-glow wayang-texture backdrop-blur-sm relative overflow-hidden cursor-pointer"
+    >
+      <div className="absolute top-1 right-1 wayang-decoration">
+        <img
+          src="assets/images/wayang-pattern5.png"
+          alt=""
+          className="w-6 h-6 opacity-10 wayang-float"
+        />
+      </div>
+      <CardContent className="p-6">
+        <div className="flex items-center space-x-4">
+          <div className="text-3xl wayang-gradient rounded-full w-14 h-14 flex items-center justify-center group-hover:wayang-glow transition-all wayang-shadow">
+            {team.icon}
+          </div>
+          <div className="flex-1">
+            <h3 className="font-semibold text-lg text-foreground group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors mb-1">
+              {team.name}
+            </h3>
+            <Button
+              variant="outline"
+              size="sm"
+              className="wayang-border bg-white/80 dark:bg-slate-800/80 text-amber-700 dark:text-amber-300 hover:wayang-gradient hover:text-white transition-all duration-300"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(team.url, "_blank");
+              }}
+            >
+              Kunjungi <ExternalLink className="w-3 h-3 ml-1" />
             </Button>
           </div>
         </div>
@@ -678,7 +770,8 @@ export default function Index() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center -mt-6 sm:mt-0">
                 <Button
                   size="lg"
-                  className="wayang-gradient hover:opacity-90 transition-all wayang-shadow text-white border-2 border-amber-300/50"
+                  variant="outline"
+                  className="wayang-border bg-white/80 dark:bg-slate-800/80 text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-900/30 backdrop-blur-sm"
                   onClick={() => selectMainCategory("storage")}
                 >
                   <Database className="w-5 h-5 mr-2" />
@@ -686,12 +779,20 @@ export default function Index() {
                 </Button>
                 <Button
                   size="lg"
-                  variant="outline"
-                  className="wayang-border bg-white/80 dark:bg-slate-800/80 text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-900/30 backdrop-blur-sm"
+                  className="wayang-gradient hover:opacity-90 transition-all wayang-shadow text-white border-2 border-amber-300/50"
                   onClick={() => selectMainCategory("official")}
                 >
                   <Globe className="w-5 h-5 mr-2" />
                   Official Website
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="wayang-border bg-white/80 dark:bg-slate-800/80 text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-900/30 backdrop-blur-sm"
+                  onClick={() => setSelectedView("teams")}
+                >
+                  <Users className="w-5 h-5 mr-2" />
+                  Monitoring Tim Kerja
                 </Button>
               </div>
             </div>
@@ -715,6 +816,25 @@ export default function Index() {
 
           {/* Overview Sections */}
         </>
+      );
+    }
+
+    if (selectedView === "teams") {
+      return (
+        <div className="container py-8">
+          <div className="flex items-center mb-6 bg-yellow-50/50 dark:bg-slate-800/50 rounded-lg p-4 border border-yellow-200/30 dark:border-slate-600/30">
+            <Users className="w-6 h-6 mr-3 text-yellow-600 dark:text-yellow-400" />
+            <h2 className="text-2xl font-bold text-foreground">Monitoring Tim Kerja</h2>
+            <span className="ml-auto text-sm text-muted-foreground bg-white dark:bg-slate-700 dark:text-slate-300 rounded-full px-3 py-1">
+              {teams.length} tim
+            </span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {teams.map((team) => (
+              <TeamCard key={team.name} team={team} />
+            ))}
+          </div>
+        </div>
       );
     }
 
@@ -1014,6 +1134,53 @@ export default function Index() {
                         );
                       },
                     )}
+                  </div>
+                )}
+              </div>
+
+              {/* Monitoring Tim Kerja */}
+              <div>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-between hover:bg-amber-50 dark:hover:bg-slate-700"
+                  onClick={() => toggleMenu("teams")}
+                >
+                  <div className="flex items-center">
+                    <Users className="w-4 h-4 mr-2" />
+                    Monitoring Tim Kerja
+                  </div>
+                  {openMenus.teams ? (
+                    <ChevronDown className="w-4 h-4" />
+                  ) : (
+                    <ChevronRight className="w-4 h-4" />
+                  )}
+                </Button>
+
+                {openMenus.teams && (
+                  <div className="ml-6 mt-2 space-y-1">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className={`w-full justify-start text-sm py-2 ${selectedView === "teams" ? "wayang-gradient text-white" : "hover:bg-amber-100 dark:hover:bg-slate-700"}`}
+                      onClick={() => setSelectedView("teams")}
+                    >
+                      Lihat Semua
+                    </Button>
+                    {teams.map((team) => {
+                      const IconTeam = teamIconMap[team.name] || Users;
+                      return (
+                        <Button
+                          key={team.name}
+                          variant="ghost"
+                          size="sm"
+                          className="w-full justify-start text-xs leading-relaxed py-2 h-auto hover:bg-amber-50 dark:hover:bg-slate-700"
+                          onClick={() => window.open(team.url, "_blank")}
+                        >
+                          <IconTeam className="w-3 h-3 mr-2 flex-shrink-0" />
+                          <span className="text-left break-words">{team.name}</span>
+                        </Button>
+                      );
+                    })}
                   </div>
                 )}
               </div>
